@@ -4,6 +4,8 @@
   "description": "chat on react ts and nodejs",
   "main": "index.js",
   "scripts": {
+    "buid:server": "webpack --config ./webpack/webpack.server.js --progress --noEmit",
+    "start:server": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:server": "eslint --debug server/"
   },
@@ -18,12 +20,15 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.13.0",
     "@typescript-eslint/parser": "^2.13.0",
+    "babel-loader": "^8.0.6",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-react": "^7.17.0",
+    "ts-loader": "^6.2.1",
     "typescript": "^3.7.3",
     "webpack": "^4.41.3",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "webpack-node-externals": "^1.7.2"
   }
 }
