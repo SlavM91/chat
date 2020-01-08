@@ -18,6 +18,8 @@
     "jest": true
   },
   "rules": {
+    "react/prop-types": "off",
+    "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "React" }],
     "import/extensions": [
       "error",
       "ignorePackages",

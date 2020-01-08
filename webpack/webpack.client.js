@@ -4,14 +4,20 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   entry: `./client/src/index.tsx`,
   output: {
     filename: "client.js",
     path: path.resolve(__dirname, "../dist"),
     library: "client"
   },
+  devtool: "eval-source-map",
   resolve: {
+    alias: {
+      "@components": "./client/src/components/",
+      "@containers": "./client/src/containers/",
+      "@common": "./client/src/common/"
+    },
     extensions: [".ts", ".tsx", ".js", ".json"]
   },
   plugins: [
