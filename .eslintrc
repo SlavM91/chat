@@ -20,6 +20,7 @@
   "rules": {
     "react/prop-types": "off",
     "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "React" }],
+    "@typescript-eslint/no-var-requires":  "off",
     "import/extensions": [
       "error",
       "ignorePackages",

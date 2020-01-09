@@ -1,10 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+const merge = require("webpack-merge");
 const nodeExternals = require("webpack-node-externals");
+const common = require("./webpack.common.js");
 
-module.exports = {
-  mode: "production",
+module.exports = merge(common, {
   entry: "./server/src/index.ts",
   output: {
     filename: "server.js",
@@ -13,23 +12,6 @@ module.exports = {
     umdNamedDefine: true,
     library: "server"
   },
-  resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"]
-  },
   target: "node",
-  module: {
-    rules: [
-      {
-        test: /\.(js)?$/,
-        use: ["babel-loader"],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.(ts|tsx)?$/,
-        loader: "ts-loader",
-        exclude: /node_modules/
-      }
-    ]
-  },
   externals: [nodeExternals()]
-};
+});

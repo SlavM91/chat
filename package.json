@@ -4,9 +4,10 @@
   "description": "chat on react ts and nodejs",
   "main": "index.js",
   "scripts": {
-    "buid:server": "webpack --config ./webpack/webpack.server.js --progress --noEmit",
-    "start:client": "webpack-dev-server --config ./webpack/webpack.client.js --open --progress --color --watch",
     "start:server": "node dist/server.js",
+    "build:server": "webpack --config ./webpack/webpack.server.js --progress --noEmit",
+    "start:client": "webpack-dev-server --config ./webpack/webpack.client.js --mode=development --open --progress --color --watch",
+    "build:client": "webpack --config ./webpack/webpack.client.js --mode=production --progress --color",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:server": "eslint --debug server/"
   },
@@ -40,6 +41,7 @@
     "webpack": "^4.41.3",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
+    "webpack-merge": "^4.2.2",
     "webpack-node-externals": "^1.7.2"
   }
 }

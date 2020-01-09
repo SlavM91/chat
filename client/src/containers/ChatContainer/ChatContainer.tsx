@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import * as React from 'react'
 
 type ChatContainerProps = {};
 
 type ChatContainerState = {};
 
-export class ChatContainer extends Component<ChatContainerProps, ChatContainerState> {
+export class ChatContainer extends React.Component<ChatContainerProps, ChatContainerState> {
     render() {
         return <div>1</div>
     }

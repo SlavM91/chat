@@ -1,44 +1,30 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
+const merge = require("webpack-merge");
+const common = require("./webpack.common.js");
 
-module.exports = {
-  mode: "development",
-  entry: `./client/src/index.tsx`,
-  output: {
-    filename: "client.js",
-    path: path.resolve(__dirname, "../dist"),
-    library: "client"
-  },
-  devtool: "eval-source-map",
-  resolve: {
-    alias: {
-      "@components": "./client/src/components/",
-      "@containers": "./client/src/containers/",
-      "@common": "./client/src/common/"
+const clientConfiguration = (isDevMode) => {
+  return {
+    devtool: isDevMode ? "eval-source-map" : "none",
+    entry: "./client/src/index.tsx",
+    output: {
+      filename: "client.js",
+      path: path.resolve(__dirname, "../dist"),
+      library: "client"
     },
-    extensions: [".ts", ".tsx", ".js", ".json"]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Chat Application",
-      id: "root",
-      template: `./client/template/index.html`
-    })
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.(js)?$/,
-        use: ["babel-loader"],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.(ts|tsx)?$/,
-        loader: "ts-loader",
-        exclude: /node_modules/
-      }
-    ]
+    plugins: [
+      new HtmlWebpackPlugin({
+        title: "Chat Application",
+        id: "root",
+        template: "./client/template/index.html"
+      })
+    ],
   }
+};
+module.exports = function (env, argv) {
+  const isDevMode = argv.mode !== "production";
+  return merge([
+    common,
+    clientConfiguration(isDevMode),
+  ]);
 };

@@ -1,9 +1,12 @@
 {
   "include": [
-    "server/src/**/*.ts"
+    "server/src/**/*.ts",
+    "client/src/**/*.tsx",
+    "client/src/**/*.ts"
   ],
   "compilerOptions": {
     "module": "commonjs",
+    "allowJs": true,
     "target": "es6",
     "jsx": "react",
     "noImplicitAny": false,
