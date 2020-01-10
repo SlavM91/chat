@@ -1,9 +1,11 @@
+const path = require('path');
+
 module.exports = {
     resolve: {
       alias: {
-        "@components": "./client/src/components/",
-        "@containers": "./client/src/containers/",
-        "@common": "./client/src/common/"
+        "@components": path.resolve(__dirname, '../client/src/components/'),
+        "@containers": path.resolve(__dirname, '../client/src/containers/'),
+        "@common": path.resolve(__dirname, '../client/src/common/')
       },
       extensions: [".ts", ".tsx", ".js", ".json"]
     },

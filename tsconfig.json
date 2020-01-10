@@ -1,8 +1,7 @@
 {
   "include": [
-    "server/src/**/*.ts",
-    "client/src/**/*.tsx",
-    "client/src/**/*.ts"
+    "server/src",
+    "client/src"
   ],
   "compilerOptions": {
     "module": "commonjs",

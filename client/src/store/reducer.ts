@@ -3,7 +3,12 @@ import { ChatApplicationState } from '@common/types';
 // import { LOAD_MESSAGE_LIST } from '@common/constants';
 
 export const initialState: ChatApplicationState = {
-    messageList: [],
+    messageList: [
+        {
+            message:'testMessage',
+            userName: 'testUser'
+        }
+    ],
 };
 
 const chartReducer = (state = initialState, action: any) => {
