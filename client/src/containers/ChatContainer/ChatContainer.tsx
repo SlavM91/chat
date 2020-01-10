@@ -4,12 +4,9 @@ import {Message} from "@common/types";
 
 interface ChatContainerProps {
     messageList: Array<Message>;
-};
+}
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface ChatContainerState {}
-
-class ChatContainerView extends React.Component<ChatContainerProps, ChatContainerState> {
+class ChatContainerView extends React.Component<ChatContainerProps, {}> {
     constructor(props) {
         super(props)
     }
