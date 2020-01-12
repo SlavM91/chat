@@ -16,6 +16,7 @@
     "paths": {
       "@components/*": ["client/src/components/*"],
       "@containers/*": ["client/src/containers/*"],
+      "@store/*": ["client/src/store/*"],
       "@common/*": ["client/src/common/*"]
     }
   },

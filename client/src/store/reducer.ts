@@ -15,7 +15,11 @@ const chartReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case 'loadMessageList':
             return produce(state, draft => {
-                draft.messageList = action.payload.messageList;
+                draft.messageList = action.messageList;
+            });
+        case 'sendMessage':
+            return produce(state, draft => {
+                draft.messageList = [...state.messageList, action.message]
             });
         default:
             return state;

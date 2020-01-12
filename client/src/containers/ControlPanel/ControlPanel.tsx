@@ -1,14 +1,28 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Message } from "@common/types";
+import { sendMessage } from "@store/actions";
 
 interface ControlPanelState {
     message: string;
 }
 
+interface DispatchFromProps {
+    sendMessage: (message: Message) => void;
+}
+
 class ControlPanelView extends React.Component<any, ControlPanelState>{
+    state = {
+        message: ''
+    };
+
     submitHandler = (event) => {
         event.preventDefault();
-        debugger;
+        event.stopPropagation();
+        const { message } = this.state;
+        if (message) {
+            this.props.sendMessage({ userName: 'TESTUSER!!!', message: this.state.message })
+        }
     };
 
     changeHandler = (event) => {
@@ -29,4 +43,10 @@ class ControlPanelView extends React.Component<any, ControlPanelState>{
     }
 }
 
-export const ControlPanel = connect(store => store)(ControlPanelView);
+const mapDispatchToProps = (dispatch): DispatchFromProps => {
+    return {
+        sendMessage: (message: Message) => dispatch(sendMessage(message)),
+    }
+};
+
+export const ControlPanel = connect(null, mapDispatchToProps)(ControlPanelView);
