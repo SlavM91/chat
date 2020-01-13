@@ -22,11 +22,11 @@ class ControlPanelView extends React.Component<any, ControlPanelState>{
 
     submitHandler = (event) => {
         event.preventDefault();
-        event.stopPropagation();
         const { message } = this.state;
         const { userName } = this.props;
         const uid = Math.random().toString(35).substr(2, 11);
         if (message) {
+            this.setState({message: ''});
             this.props.sendMessage({ userName, message, uid })
         }
     };
@@ -40,6 +40,7 @@ class ControlPanelView extends React.Component<any, ControlPanelState>{
             <div>
                 <form onSubmit={this.submitHandler}>
                     <input
+                        value={this.state.message}
                         onChange={this.changeHandler}
                         type="text"/>
                     <input type='submit' />

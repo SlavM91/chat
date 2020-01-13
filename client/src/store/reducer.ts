@@ -26,7 +26,6 @@ const chartReducer = (state = initialState, action: any) => {
             });
         case 'logIn':
             return produce(state, draft => {
-                debugger
                 draft.isAuthorized = true;
                 draft.userName = action.user.userName;
             });

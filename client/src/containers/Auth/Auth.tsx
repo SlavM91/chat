@@ -26,7 +26,6 @@ class AuthView extends React.Component<any, AuthState>{
 
     handleSubmit = (event) => {
         event.preventDefault();
-        debugger;
         const { userName } = this.state;
         this.props.logIn({ userName })
     };

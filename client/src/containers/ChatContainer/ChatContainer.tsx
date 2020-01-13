@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import {ChatApplicationState, Message} from "@common/types";
+import {MessageList} from "@components/MessageList";
 
 interface ChatContainerProps {
     messageList: Array<Message>;
@@ -13,15 +14,7 @@ class ChatContainerView extends React.Component<ChatContainerProps, {}> {
     render() {
         const { messageList } = this.props;
         return <div>
-            {
-                messageList.map(el =>
-                <div key={el.uid}>
-                    <span>Username-{el.userName}</span>
-                    <br/>
-                    <span>Message-{el.message}</span>
-                </div>
-                )
-            }
+            <MessageList messageList={messageList}/>
         </div>
     }
 }
