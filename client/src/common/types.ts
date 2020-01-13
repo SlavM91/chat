@@ -2,16 +2,18 @@ import { Action } from 'redux';
 
 export interface User {
     userName: string;
-    password: string;
 }
 
 export interface Message {
+    uid: string;
     userName: string;
     message: string;
 }
 
 export interface ChatApplicationState {
     messageList: Array<Message>;
+    isAuthorized: boolean;
+    userName: string;
 }
 
 export interface LoadMessageListRequest extends Action {

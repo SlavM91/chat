@@ -14,7 +14,6 @@ interface DispatchFromProps {
 class AuthView extends React.Component<any, AuthState>{
     state = {
         userName: '',
-        password: '',
     };
 
     handleChange = (event) => {
@@ -27,6 +26,9 @@ class AuthView extends React.Component<any, AuthState>{
 
     handleSubmit = (event) => {
         event.preventDefault();
+        debugger;
+        const { userName } = this.state;
+        this.props.logIn({ userName })
     };
 
     render () {
@@ -40,13 +42,6 @@ class AuthView extends React.Component<any, AuthState>{
                             type="text"
                             name="userName"
                         />
-                    </label>
-                    <label>
-                        Password:
-                        <input
-                            onChange={this.handleChange}
-                            type="text"
-                            name="password" />
                     </label>
                     <input type='submit' value="Log In" />
                 </form>

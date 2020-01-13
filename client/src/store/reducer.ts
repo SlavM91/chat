@@ -6,9 +6,12 @@ export const initialState: ChatApplicationState = {
     messageList: [
         {
             message:'testMessage',
-            userName: 'testUser'
+            userName: 'testUser',
+            uid: 'djsokm73n4d'
         }
     ],
+    userName: '',
+    isAuthorized: false
 };
 
 const chartReducer = (state = initialState, action: any) => {
@@ -20,6 +23,12 @@ const chartReducer = (state = initialState, action: any) => {
         case 'sendMessage':
             return produce(state, draft => {
                 draft.messageList = [...state.messageList, action.message]
+            });
+        case 'logIn':
+            return produce(state, draft => {
+                debugger
+                draft.isAuthorized = true;
+                draft.userName = action.user.userName;
             });
         default:
             return state;

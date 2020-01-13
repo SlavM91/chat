@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Message } from "@common/types";
+import {ChatApplicationState, Message} from "@common/types";
 import { sendMessage } from "@store/actions";
 
 interface ControlPanelState {
@@ -9,6 +9,10 @@ interface ControlPanelState {
 
 interface DispatchFromProps {
     sendMessage: (message: Message) => void;
+}
+
+interface StateToProps {
+    userName: string;
 }
 
 class ControlPanelView extends React.Component<any, ControlPanelState>{
@@ -20,8 +24,10 @@ class ControlPanelView extends React.Component<any, ControlPanelState>{
         event.preventDefault();
         event.stopPropagation();
         const { message } = this.state;
+        const { userName } = this.props;
+        const uid = Math.random().toString(35).substr(2, 11);
         if (message) {
-            this.props.sendMessage({ userName: 'TESTUSER!!!', message: this.state.message })
+            this.props.sendMessage({ userName, message, uid })
         }
     };
 
@@ -49,4 +55,11 @@ const mapDispatchToProps = (dispatch): DispatchFromProps => {
     }
 };
 
-export const ControlPanel = connect(null, mapDispatchToProps)(ControlPanelView);
+const mapStateToProps = (state: ChatApplicationState): StateToProps => {
+    return ({
+            userName: state.userName
+        }
+    )
+};
+
+export const ControlPanel = connect(mapStateToProps, mapDispatchToProps)(ControlPanelView);

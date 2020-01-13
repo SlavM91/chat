@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import {Message} from "@common/types";
+import {ChatApplicationState, Message} from "@common/types";
 
 interface ChatContainerProps {
     messageList: Array<Message>;
@@ -15,7 +15,7 @@ class ChatContainerView extends React.Component<ChatContainerProps, {}> {
         return <div>
             {
                 messageList.map(el =>
-                <div key={Math.random()}>
+                <div key={el.uid}>
                     <span>Username-{el.userName}</span>
                     <br/>
                     <span>Message-{el.message}</span>
@@ -26,6 +26,11 @@ class ChatContainerView extends React.Component<ChatContainerProps, {}> {
     }
 }
 
-// const mapStateToProps =
+const mapStateToProps = (state: ChatApplicationState): ChatContainerProps => {
+    return ({
+            messageList: state.messageList
+        }
+    )
+};
 
-export const ChatContainer = connect(store => store)(ChatContainerView);
+export const ChatContainer = connect(mapStateToProps)(ChatContainerView);
