@@ -12,6 +12,9 @@ const clientConfiguration = (isDevMode) => {
       path: path.resolve(__dirname, "../dist"),
       library: "client"
     },
+    devServer: {
+      historyApiFallback: true
+    },
     plugins: [
       new HtmlWebpackPlugin({
         title: "Chat Application",
